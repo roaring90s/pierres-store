@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.btn {
+    margin-bottom: 80px;
+    padding: 10px 20px;
+    background: #dda059;
+    color: black;
+    border: 4px solid #8d5524;
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 4px 4px 0px #6d3b16; 
+    cursor: pointer;
+    font-family: VT323;
+    font-weight: 600;
+    font-size: 25px;
+    transition: all 0.1s ease-in-out;
+
+}
+
+.btn:hover {
+    background-color: #6b3710; 
+}
+
+btn:active {
+    box-shadow: 2px 2px 0px #6d3b16; /* Reduz a sombra para parecer pressionado */
+    transform: translate(2px, 2px);
+}
+
+.img_inicial {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+
+}    
+
+.img_inicial > img {
+    height: 90%;
+}
+
+.titulo {
+    font-family: VT323;
+    font-weight: 600;
+    font-size: 35px;
+    color: black;      
+    margin-top: 30px;
+    margin-bottom: 70px;
+    text-align: center; /* Centraliza o texto */
+    display: flex;
+    flex-direction: column; /* Mantém cada palavra em uma linha */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente se necessário */
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    .subtitulo {
+        font-size: 30px;
+    }
+
+    .menu {
+        width: 100%;
+        right: -100%;
+        text-align: center;
+    }
+
+    #menu-toggle:checked ~ .menu {
+        right: 0;
+    }
+
+}

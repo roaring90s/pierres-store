@@ -18,28 +18,31 @@ body, html {
 }
 
 
-.background{
+body{
     background-image: url('/img/background.jpeg');
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
-    min-height: 94vh;
+    min-height: 100vh;
 }
 
 header {
     width: 100%;     
     max-width: 1200px; 
-    margin: 0 auto;
     background-color: transparent;
+    margin: 0 auto;
     padding: 10px 5vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: black;
-    position: relative;
-    height: 8vh;
+    position: fixed;
+    height: 6vh;
+    z-index: 1000;
+    right: 2px;
+    left:2px
 }
 
 .subtitulo {
@@ -47,6 +50,7 @@ header {
     color: #e8a81f;
     font-weight: 600;
     font-size: 2rem;
+    text-decoration: none;
 }
 
 #menu-toggle {
@@ -89,8 +93,9 @@ header {
     color: black;
     text-decoration: none;
     font-family: VT323;
-    font-size: 1.2rem;
-    padding: 0.5rem;
+    font-size: 1.5rem;
+    padding: 1vh 5vw;
+    width: 100%;
     display: block;
     border-bottom: 2px solid #8d5524;
     border-radius: 5px;
@@ -110,7 +115,7 @@ header {
     justify-content: center;
     gap: 1rem;
 }
-
+/*
 footer {
     margin-top: auto;
     background: #dda059;
@@ -120,7 +125,7 @@ footer {
     align-items: center;
     width: 100%;
 }
-
+*/
 
 .icon img {
     width: 2.5rem;
@@ -135,13 +140,26 @@ footer {
 /*media queries*/
 
 @media (min-width: 1024px) { 
-    .background {
+    .body {
         min-height: 94vh;
     }
 
-    .footer {
-        padding: 10px;
+    .menu {
+        width: 180px;
+        max-width: 20vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
     }
+
+    .menu a {
+        font-size: 1.5rem;
+        width: auto;
+        padding: 1.5vh 3vw;
+        text-align: center;
+    }
+
 }
 
 @media (min-width: 1400px) {
@@ -151,19 +169,41 @@ footer {
         padding: 1.5% 0; 
     }
 
-    .menu {
-        flex-direction: row; 
-        gap: 2rem;
-        width: auto;
-        position: static;
-        transform: none;
+    @media (min-width: 1400px) {
+        .menu {
+            position: fixed;
+            top: 10vh;
+            right: 0;
+            width: 15vw;
+            background-color: #dda059;
+            color: white;
+            padding: 5%;
+            transition: transform 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transform: translateX(100%); /* Mantém oculto */
+        }
+    
+        #menu-toggle:checked ~ .menu {
+            transform: translateX(0); /* Exibe ao clicar */
+        }
     }
 
+    .menu a {
+        font-size: 2rem;
+        width: auto;
+        padding: 1.5vh 3vw;
+        text-align: center;
+    }
+
+    /*
     .footer {
         padding: 10px;
     }
+*/        
 
-    .background {
+    .body {
         min-height: 94vh;
     }
 }

@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.container {
+    padding-top: 1vh;    
+    background: url('/img/template_container.png');
+    background-size: 190% 200%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: 6px solid #6d3b16;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+
+    width: 90%;
+    max-width: 500px;
+    margin: 7vh auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.image-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    width: 190px;
+    height: 180px;
+    margin: 20px auto;
+}
+
+.image-border {
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/img/container_2.png') no-repeat center;
+    background-size: cover;
+    pointer-events: none;
+}
+
+.inner-image {
+    position: absolute;
+    justify-items: center;
+    width: 80%;
+    height: auto;
+    left: 20px;
+}
+
+.container h1 {
+    margin-top: 15px;
+    font-family: VT323;
+    font-weight: 500;
+    font-size: 3rem;
+}
+
+.container p {
+    font-family: VT323;
+    font-weight: 400;
+    font-size: 1.7rem;
+    line-height: 1.1;
+}
+
+.quote {
+    font-style: italic;
+    border-left: 4px solid #8d5524;
+    padding: 10px 20px;
+    margin: 20px 0;
+    color: #333;;
+}

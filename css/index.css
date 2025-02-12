@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 .btn {
-    margin-bottom: 3vh;
-    padding: 10px 5vw;
+    margin-bottom: 3vh auto;
+    padding: 2vh 5vw;
     background: #dda059;
     color: black;
     border: 4px solid #8d5524;
-    border-radius: 5px;
+    border-radius: 1vw;
     box-shadow: 4px 4px 0px #6d3b16; 
     cursor: pointer;
     font-family: VT323;
@@ -26,12 +26,15 @@ btn:active {
     transform: translate(2px, 2px);
 }
 
+
 .img_inicial {
+    padding-top: 8vh;
     margin: 2vh 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 25vh;
+    height: 35vh;
+    width: 100%;
 
 }    
 
@@ -39,6 +42,7 @@ btn:active {
     height: 90%;
     max-width: 100%;
 }
+
 
 .titulo {
     font-family: VT323;
@@ -59,6 +63,7 @@ btn:active {
         padding: 12px 6vw;
     }
 
+
     .img_inicial {
         height: 40vh;
     }
@@ -67,3 +72,12 @@ btn:active {
         font-size: 2.5rem; 
     }
 }
+
+@media (min-width: 1024px) {
+
+
+    .img_inicial {
+        height: 40vh;
+    }
+
+}    

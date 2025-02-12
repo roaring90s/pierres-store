@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.container {
+    background: url('/img/template_container.png');
+    background-size: 200% 210%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: 6px solid #6d3b16;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+
+    width: 90%;
+    max-width: 500px;
+    margin: 13vh auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+
+}
+
+.container h1 {
+    margin-top: 9px;
+    font-family: VT323;
+    font-weight: 500;
+    font-size: 3rem;
+}
+
+.container p {
+    font-family: VT323;
+    font-weight: 400;
+    font-size: 1.7rem;
+    line-height: 1.1;
+    margin-bottom: 7px;
+}

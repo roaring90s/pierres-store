@@ -12,10 +12,10 @@
     border-radius: 10px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 
-    width: 90%;
+    width: 98%;
     max-width: 500px;
     margin: 13vh auto;
-    padding: 20px;
+    padding: 18px;
     background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
 
@@ -115,6 +115,7 @@
 }
 
 .container p {
+    margin: 8px;
     font-family: VT323;
     font-weight: 400;
     font-size: 1.7rem;
@@ -123,8 +124,7 @@
 
 .quote {
     font-style: italic;
-    border-left: 4px solid #8d5524;
-    padding: 7px 11px;
-    margin: 20px 0;
+    border-left: 3px solid #8d5524;
+    padding: 2px 0px;
     color: #333;;
 }

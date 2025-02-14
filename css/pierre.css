@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 .container {
+    position: relative;    
     padding-top: 1vh;    
     background: url('/img/template_container.png');
     background-size: 190% 200%;
@@ -13,7 +14,7 @@
 
     width: 90%;
     max-width: 500px;
-    margin: 7vh auto;
+    margin: 13vh auto;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
@@ -54,6 +55,58 @@
     left: 20px;
 }
 
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7; 
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+
+    }
+}
+
+.arrow {
+    position: absolute;
+    top: 1px; 
+    font-size: 32px; 
+    background: none;
+    border: none; 
+    color: #6b3710; 
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    animation: pulse 1.5s infinite;
+}
+
+.arrow.right {
+    right: 15%; 
+}
+
+.arrow.left {
+    left: 15%;
+}
+
+.arrow:hover {
+    transform: scale(1.2);
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.page.active {
+    opacity: 1;
+    position: relative;
+}
+
 .container h1 {
     margin-top: 15px;
     font-family: VT323;
@@ -71,7 +124,7 @@
 .quote {
     font-style: italic;
     border-left: 4px solid #8d5524;
-    padding: 10px 20px;
+    padding: 7px 11px;
     margin: 20px 0;
     color: #333;;
 }

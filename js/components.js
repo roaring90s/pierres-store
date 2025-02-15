@@ -1,19 +1,19 @@
 document.addEventListener("DOMContentLoaded", function() {
-    function carregarComponente(seletor, arquivo) {
-        fetch(arquivo)
+    function loadComponent(selector, archive) {
+        fetch(archive)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error(`Erro ao carregar ${arquivo}`);
+                    throw new Error(`Error at ${archive}`);
                 }
                 return response.text();
             })
             .then(data => {
-                document.querySelector(seletor).innerHTML = data;
+                document.querySelector(selector).innerHTML = data;
             })
             .catch(error => console.error(error));
     }
 
-    carregarComponente("header", "components/header.html");
+    loadComponent("header", "components/header.html");
 });
 
 
@@ -39,3 +39,18 @@ function togglePage() {
         currentPage = 1;
     }
 }
+
+function setFavicon(faviconPath) {
+    let link = document.querySelector("link[rel='icon']");
+
+    if (!link) {
+        link = document.createElement("link");
+        link.rel = "icon";
+        link.type = "image/png";
+        document.head.appendChild(link);
+    }
+
+    link.href = faviconPath;
+}
+
+setFavicon("/img/pierres_shop.png");

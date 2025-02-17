@@ -20,7 +20,6 @@ main {
     100% {
         transform: scale(1);
         opacity: 1;
-
     }
 }
 
@@ -48,7 +47,7 @@ main {
     height: auto;
 }
 
-.btn {
+.season_btn {
     margin-bottom: 3vh auto;
     padding: 2vh 6vw;
     background: #dda059;
@@ -62,14 +61,106 @@ main {
     font-size: 1.5rem;
     transition: all 0.1s ease-in-out;
     text-align: center;
-
 }
 
-.btn:hover {
+.season_btn:hover {
     background-color: #6b3710; 
 }
 
-btn:active {
+.season_btn:active {
     box-shadow: 2px 2px 0px #6d3b16;
     transform: translate(2px, 2px);
+}
+
+/* Estiliza o container dos produtos */
+#products-container {
+    background: url('/img/template_container.png');
+    background-size: 200% 210%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: 6px solid #6d3b16;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+
+    width: 90%;
+    max-width: 500px;
+    margin: 13vh auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+
+#products-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Layout responsivo */
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Estiliza cada produto individualmente */
+.product {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+}
+
+/* Nome do produto */
+.product h3 {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Preço */
+.product p {
+    font-size: 16px;
+    color: #555;
+    font-weight: bold;
+}
+
+/* Imagem do produto */
+.product img {
+    width: 100%;
+    max-width: 150px;
+    border-radius: 8px;
+}
+
+/* Estiliza o botão de voltar */
+#back-btn {
+    background-color: #dda059;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-family: VT323;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 0.3s;
+}
+
+#back-btn:hover {
+    background-color: #6b3710;
+}
+
+#cart-info {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #6d3b16;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaço entre o ícone e o contador */
+}
+
+#cart-icon {
+    font-size: 1.5rem;  /* Tamanho maior para o ícone */
 }

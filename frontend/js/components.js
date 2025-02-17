@@ -3,18 +3,26 @@ document.addEventListener("DOMContentLoaded", function() {
         fetch(archive)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error(`Error at ${archive}`);
+                    throw new Error(`Error loading ${archive}: ${response.statusText}`);
                 }
                 return response.text();
             })
             .then(data => {
-                document.querySelector(selector).innerHTML = data;
+                // Verifica se o seletor existe no DOM antes de tentar inserir o HTML
+                const element = document.querySelector(selector);
+                if (element) {
+                    element.innerHTML = data;
+                } else {
+                    console.error(`No element found for selector: ${selector}`);
+                }
             })
             .catch(error => console.error(error));
     }
 
-    loadComponent("header", "/frontend/components/header.html");
+    // Carrega o componente "header.html" dentro do elemento "header"
+    loadComponent("header", "components/header.html");
 });
+
 
 
 let currentPage = 1;

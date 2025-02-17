@@ -50,6 +50,14 @@ header {
     left:2px
 }
 
+.header-icons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+}
+
+
 .subtitulo {
     font-family: VT323;
     color: #e8a81f;

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 .container {
-    background: url('/img/template_container.png');
+    background: url('../img/template_container.png');
     background-size: 200% 210%;
     background-position: center;
     background-repeat: no-repeat;

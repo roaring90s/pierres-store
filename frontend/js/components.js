@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .catch(error => console.error(error));
     }
 
-    loadComponent("header", "components/header.html");
+    loadComponent("header", "/frontend/components/header.html");
 });
 
 
@@ -50,7 +50,21 @@ function setFavicon(faviconPath) {
         document.head.appendChild(link);
     }
 
-    link.href = faviconPath;
+    link.href = `${faviconPath}?v=${new Date().getTime()}`;
 }
 
-setFavicon("/img/pierres_shop.png");
+setFavicon("../img/pierres_shop.png");
+
+
+function filterProducts(season) {
+    fetch(`/getProducts?season=${season}`)
+        .then(response => response.json())
+        .then(data => {
+            let productList = document.getElementById("product-list"); 
+            productList.innerHTML = "";
+            data.forEach(product => {
+                productList.innerHTML += `<p>${product.name} - R$ ${product.price}</p>`;
+            });
+        })
+        .catch(error => console.error("Not Found:", error));
+}

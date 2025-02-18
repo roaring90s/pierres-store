@@ -10,10 +10,10 @@
 
 <body>
 
-    <header></header>
+<header></header>
 
     <main>
-        <div class="title_seasons">
+         <div class="title_seasons">
             <h1>Select Season</h1>
         </div>
 
@@ -31,13 +31,20 @@
         <div id="products-container" style="display: none;">
                 <button class="back-btn" onclick="togglePage()">◀</button>
             <h3 id="season-title">Season</h3> 
+
+            <div id="cart_icon">
+                <span id="cart-icon" class="cart-icon">🛒</span>
+                <span id="cart-count">0</span>
+            </div>
+
             <div id="products-list"></div>
         </div>  
 
     </main>
 
-    <script src="/js/components.js"></script>
-    <script src="js/seasons.js"></script>
+<script src="/js/components.js"></script>
+<script src="js/seasons.js"></script>
 
 </body>
+
 </html>

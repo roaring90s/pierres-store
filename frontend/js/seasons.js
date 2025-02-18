@@ -32,8 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const addToCartButton = productElement.querySelector(".add-to-cart");
             addToCartButton.addEventListener("click", () => {
                 cart.push(product); 
+                localStorage.setItem('cart', JSON.stringify(cart)); // Salva no localStorage
                 updateCartCount(); 
-            });
+            });            
         });
 
 
@@ -87,3 +88,7 @@ function togglePage() {
     seasonSelection.style.display = "block";
     titleSeason.style.display = "block";
 }
+
+document.getElementById("cart-icon").addEventListener("click", () => {
+    window.location.href = "/cart.html";
+});

@@ -7,98 +7,8 @@ main {
     margin: 0;
     gap: 10px;
 }
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.2);
-        opacity: 0.7; 
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-.title_seasons {
-    font-family: VT323;
-    font-weight: 600;
-    font-size: 1.6rem;
-    color: black;      
-    margin: 2vh 0;
-    text-align: center; 
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    max-width: 100%;
-    animation: pulse 1.5s infinite;
-}
-
-.buttons_seasons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px; 
-    justify-content: center; 
-    align-items: center;
-    padding: 20px;
-    height: auto;
-}
-
-.season_btn {
-    margin-bottom: 3vh auto;
-    padding: 2vh 6vw;
-    background: #dda059;
-    color: black;
-    border: 4px solid #8d5524;
-    border-radius: 1vw;
-    box-shadow: 4px 4px 0px #6d3b16; 
-    cursor: pointer;
-    font-family: VT323;
-    font-weight: 600;
-    font-size: 1.5rem;
-    transition: all 0.1s ease-in-out;
-    text-align: center;
-}
-
-.season_btn:hover {
-    background-color: #6b3710; 
-}
-
-.season_btn:active {
-    box-shadow: 2px 2px 0px #6d3b16;
-    transform: translate(2px, 2px);
-}
-
-#cart_icon {
-    position: absolute;
-    right: 20px;   /* Aproxima o ícone e o contador da borda direita */
-    top: 10px;  
-    display: flex;
-    align-items: center; 
-    cursor: pointer;
-}
-
-#cart-icon {
-    font-size: 2.2rem; 
-    padding: 15px; 
-    border-radius: 50%;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-#cart-icon:hover {
-    transform: scale(1.1);
-}
-
-#cart-count {
-    font-size: 3rem;  
-    font-family: VT323; 
-    color: #6b3710;     
-}
-
-#products-container {
+/* Estiliza o container dos produtos */
+#cart-container {
     background: url('/img/template_container.png');
     background-size: 200% 210%;
     background-position: center;
@@ -125,29 +35,31 @@ main {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 15px;
     justify-content: center;
-    margin-top: 28px;
+    margin-top: 20px;
 }
 
-
-.product {
+/* Estiliza cada produto individualmente */
+#cart-items {
+    margin-top: 20px; 
     background: #8d5524;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column; 
-    align-items: flex-start;
+    align-items: center;  /* Centraliza os itens horizontalmente */
+    justify-content: center;
     margin-bottom: 6px;
     transition: transform 0.3s ease;
     gap: 10px; 
 }
 
-.product:hover {
+#cart-items:hover {
     transform: translateY(-5px);
 }
 
-
-.product h3 {
+/* Nome do produto */
+#cart-items h3 {
     font-size: 3vh;
     margin: 0;
     text-align: left;
@@ -159,14 +71,14 @@ main {
     width: 100%; 
 }
 
-
-.product p {
+/* Preço */
+#cart-items p {
     font-size: 21px;
     color: black;
     font-family: VT323;
 }
 
-.product img {
+#cart-items img {
     width: 50px; 
     height: auto; 
     max-width: 100%;
@@ -174,7 +86,14 @@ main {
     margin-right: 1px;
 }   
 
-.add-to-cart {
+#cart-summary {
+    font-size: 25px;
+    color: black;
+    font-family: VT323;
+    margin-bottom: 4px;
+}
+
+#checkout-btn {
     width: 100%; 
     padding: 10px;
     background: #dda059;
@@ -189,23 +108,33 @@ main {
     font-size: 1.3rem;
 }
 
+.remove-item {
+    width: 100%; 
+    padding: 10px;
+    background: #dda059;
+    color: black;
+    border: 4px solid #8d5524;
+    border-radius: 5px;
+    box-shadow: 4px 4px 0px #6d3b16; 
+    cursor: pointer;
+    font-family: VT323;
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.3rem;
+}
 
-.add-to-cart:hover {
+/* Efeito de hover */
+.remove-item:hover {
     background-color: #6b3710;
 }
 
-
-.add-to-cart:disabled {
-    background-color: #ddd;
-    cursor: not-allowed;
-}
-
-#season-title {
-    display: none;
+#cart-title {
     font-size: 3.5vh;
     font-family: VT323;
     position: sticky;
     z-index: 1; 
+    margin-top: 20px; 
+    text-align: center; 
 }
 
 @keyframes pulse {

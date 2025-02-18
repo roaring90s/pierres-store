@@ -38,6 +38,18 @@ main {
     margin-top: 20px;
 }
 
+#cart-count {
+    position: absolute;
+    right: 20px;   /* Aproxima o ícone e o contador da borda direita */
+    top: 10px;  
+    display: flex;
+    align-items: center; 
+    cursor: pointer;
+    font-size: 3rem;  
+    font-family: VT323; 
+    color: #6b3710;     
+}
+
 /* Estiliza cada produto individualmente */
 #cart-items {
     margin-top: 20px; 

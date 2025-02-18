@@ -13,8 +13,9 @@
 
     <main>
         <div id="cart-container">
-            <button class="back-btn" onclick="window.history.back()";>◀</button>
+            <button class="back-btn" onclick="goBack();">◀</button>
             <h3 id="cart-title">Your Cart</h3> 
+            <span id="cart-count">0</span>
             <div id="cart-items"></div>
 
             <div id="cart-summary">
@@ -27,7 +28,7 @@
     </main>
 
 
-
+    <script src="js/cart-utils.js"></script>
     <script src="js/components.js"> </script>
     <script src="js/cart.js" defer></script>
 </body>

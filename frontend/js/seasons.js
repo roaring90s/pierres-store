@@ -4,16 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const titleSeason = document.querySelector(".title_seasons");
     const productsContainer = document.getElementById("products-container");
     const productsList = document.getElementById("products-list");
-    const backBtn = document.getElementById("back-btn");
+
     const seasonTitle = document.getElementById("season-title");
 
-
-    let cart = [];
-
-
-    const updateCartCount = () => {
-        document.getElementById("cart-count").textContent = cart.length;
-    };
+    console.log(typeof updateCartCount);
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     const displayProducts = (products) => {
         productsList.innerHTML = ""; 
@@ -31,10 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const addToCartButton = productElement.querySelector(".add-to-cart");
             addToCartButton.addEventListener("click", () => {
+                let cart = JSON.parse(localStorage.getItem('cart')) || []; // Sempre pega a versão mais recente
                 cart.push(product); 
-                localStorage.setItem('cart', JSON.stringify(cart)); // Salva no localStorage
-                updateCartCount(); 
-            });            
+                localStorage.setItem('cart', JSON.stringify(cart)); // Salva a versão atualizada no localStorage
+                updateCartCount(); // Atualiza o contador
+            });           
         });
 
 
@@ -70,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error(error);
             }
         });
-    });
+    }); 
 
 });
 
@@ -90,5 +86,9 @@ function togglePage() {
 }
 
 document.getElementById("cart-icon").addEventListener("click", () => {
-    window.location.href = "/cart.html";
+    window.location.href = "/cart.html"; 
+});
+
+window.addEventListener("pageshow", () => {
+    updateCartCount(); // Atualiza o contador quando a página for mostrada novamente
 });

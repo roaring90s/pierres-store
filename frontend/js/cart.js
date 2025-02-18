@@ -1,7 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
     const cartContainer = document.getElementById("cart-items");
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalElement = document.getElementById('total');
 
+    // Função para calcular e atualizar o total
+    const calculateTotal = () => {
+        const total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+        totalElement.textContent = `Total: $${total}`;
+    };
 
     // Exibe os itens no carrinho
     const displayCartItems = () => {
@@ -19,14 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
             cartContainer.appendChild(itemElement);
         });
 
-
+        calculateTotal(); // Atualiza o total ao exibir os itens
     };
-
+    
     // Função de remoção de item
     const removeItem = (index) => {
         cart.splice(index, 1); // Remove o item do array do carrinho
         localStorage.setItem('cart', JSON.stringify(cart)); // Atualiza o localStorage
         displayCartItems(); // Atualiza a exibição dos itens no carrinho
+        updateCartCount(); 
+        calculateTotal();
+
     };
 
     // Adiciona event listeners para os botões de remoção
@@ -37,13 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    displayCartItems();
-
-
-    const calculateTotal = () => {
-        return cart.reduce((total, item) => total + item.price, 0).toFixed(2);
-    };
-    // Exibe o total no HTML
-    const totalElement = document.getElementById('total');
-    totalElement.textContent = `Total: $${calculateTotal()}`;
+    displayCartItems(); // Chamada única da função ao carregar a página
 });
+
+function goBack() {
+    window.history.back(); 
+    setTimeout(() => {
+        updateCartCount(); // Atualiza o contador ao voltar
+    }, 100); // Pequeno delay para garantir a atualização
+}

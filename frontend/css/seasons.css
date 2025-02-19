@@ -75,7 +75,7 @@ main {
 #cart_icon {
     position: absolute;
     right: 20px;   /* Aproxima o ícone e o contador da borda direita */
-    top: 10px;  
+    top: 4px;  
     display: flex;
     align-items: center; 
     cursor: pointer;

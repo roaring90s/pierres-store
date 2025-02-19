@@ -7,7 +7,7 @@ Pierre's General Store is an e-commerce platform designed to provide a seamless 
 ## 📌 Technologies Used
 
 - **Frontend:** HTML, CSS, JavaScript  
-- **Backend:** Node.js  
+- **Backend:** Node.js, Express.js  
 - **Data Visualization:** Node.js & Tableau  
 
 ## 📂 Project Structure

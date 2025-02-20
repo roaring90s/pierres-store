@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartContainer = document.getElementById("cart-items");
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const totalElement = document.getElementById('total');
+    const checkoutBtn = document.getElementById('checkout-btn');
 
     // Função para calcular e atualizar o total
     const calculateTotal = () => {
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Função de remoção de item
     const removeItem = (index) => {
-        cart.splice(index, 1); // Remove o item do array do carrinho
+        cart.splice(index, 1);
         localStorage.setItem('cart', JSON.stringify(cart)); // Atualiza o localStorage
         displayCartItems(); // Atualiza a exibição dos itens no carrinho
         updateCartCount(); 
@@ -46,12 +47,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener("click", () => {
+            localStorage.setItem("cart", JSON.stringify(cart)); // Salva o carrinho
+            window.location.href = "payment.html";
+        });
+    }
+
     displayCartItems(); // Chamada única da função ao carregar a página
+
 });
 
 function goBack() {
     window.history.back(); 
     setTimeout(() => {
-        updateCartCount(); // Atualiza o contador ao voltar
+        updateCartCount(); 
     }, 100); // Pequeno delay para garantir a atualização
 }

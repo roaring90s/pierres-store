@@ -52,6 +52,7 @@ CREATE TABLE `cart_product` (
 
 CREATE TABLE `order` (
   `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
   `address` text NOT NULL,

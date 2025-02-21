@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Receipt</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/receipt.css">
+</head>
+<body>
+    <header></header>
+    
+    <main>
+        <div class="receipt-container">
+            <h1>Order Receipt</h1>
+            <p><strong>Order ID:</strong> <span id="order-id"></span></p>
+            
+            <h2>Products</h2>
+            <ul id="product-list" class="product-list"></ul>
+            
+            <button onclick="window.location.href='index.html'">Return to Store</button>
+        </div>
+    </main>
+    
+    <script src="js/components.js"></script>
+    <script src="/js/receipt.js" defer></script>
+
+</body>
+</html>

@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const productRoutes = require('./routes/productRoutes');
-const cartRoutes = require('./routes/cartRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 
 require('dotenv').config();
@@ -25,8 +24,7 @@ app.get('/', (req, res) => {
 
 // Rotas da API
 app.use('/products', productRoutes);
-app.use('/cart', cartRoutes);
-app.use('/orders', orderRoutes);
+app.use('/api/order', orderRoutes);
 
 // Mensagem da API no navegador (caso queira, ou remova para evitar redundância)
 app.get('/api', (req, res) => {

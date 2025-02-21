@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17/02/2025 às 17:49
+-- Tempo de geração: 20/02/2025 às 18:46
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -60,6 +60,17 @@ CREATE TABLE `order` (
   `paymentMethod` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `order`
+--
+
+INSERT INTO `order` (`id`, `name`, `phone`, `email`, `address`, `total`, `paymentMethod`) VALUES
+(1, 'John Doe', '123456789', 'john@example.com', 'John\'s Farm', 45, 'C'),
+(2, 'John Doe', '123456789', 'john@example.com', 'John\'s Farm', 70, 'C'),
+(3, 'Toby Diaz', '8879456123', 'theonethoby@gmail.com', 'Toby\'s Farm', 145, 'D'),
+(4, 'Nack Tias', '123789456', 'nack@aot.com', 'Nack Tia\'s Farm', 100, 'C'),
+(5, 'El Marco', '6178945612', 'elmarco@delocho.com', 'Mexico City', 1139, 'S');
+
 -- --------------------------------------------------------
 
 --
@@ -72,6 +83,18 @@ CREATE TABLE `order_product` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `order_product`
+--
+
+INSERT INTO `order_product` (`order_id`, `product_id`, `quantity`) VALUES
+(4, 6, 1),
+(4, 7, 1),
+(4, 8, 1),
+(5, 6, 1),
+(5, 34, 1),
+(5, 37, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -83,34 +106,79 @@ CREATE TABLE `product` (
   `name` varchar(255) NOT NULL,
   `price` double NOT NULL,
   `season` enum('spring','summer','autumn','winter') NOT NULL,
-  `stock` int(11) NOT NULL
+  `image_url` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `price`, `season`, `stock`) VALUES
-(1, 'Cauliflower Seeds', 80, 'spring', 100),
-(2, 'Garlic Seeds', 40, 'spring', 120),
-(3, 'Kale Seeds', 70, 'spring', 90),
-(4, 'Parsnip Seeds', 20, 'spring', 200),
-(5, 'Strawberry Seeds', 100, 'spring', 50),
-(6, 'Blueberry Seeds', 80, 'summer', 110),
-(7, 'Melon Seeds', 50, 'summer', 150),
-(8, 'Hot Pepper Seeds', 40, 'summer', 130),
-(9, 'Corn Seeds', 150, 'summer', 100),
-(10, 'Tomato Seeds', 50, 'summer', 140),
-(11, 'Pumpkin Seeds', 100, 'autumn', 90),
-(12, 'Grape Starter', 60, 'autumn', 120),
-(13, 'Yam Seeds', 60, 'autumn', 110),
-(14, 'Cranberry Seeds', 240, 'autumn', 80),
-(15, 'Wheat Seeds', 10, 'autumn', 300),
-(16, 'Winter Seeds', 5, 'winter', 200),
-(17, 'Snow Yam Seeds', 30, 'winter', 180),
-(18, 'Holly Seeds', 50, 'winter', 160),
-(19, 'Crystal Fruit Seeds', 100, 'winter', 140),
-(20, 'Crocus Seeds', 20, 'winter', 220);
+INSERT INTO `product` (`id`, `name`, `price`, `season`, `image_url`) VALUES
+(1, 'Carrot Seeds', 15, 'spring', 'https://stardewvalleywiki.com/mediawiki/images/1/1f/Carrot_Seeds.png'),
+(2, 'Garlic Seeds', 20, 'spring', 'https://stardewvalleywiki.com/mediawiki/images/d/d5/Garlic_Seeds.png'),
+(3, 'Kale Seeds', 35, 'spring', 'https://stardewvalleywiki.com/mediawiki/images/0/00/Kale_Seeds.png'),
+(4, 'Parsnip Seeds', 10, 'spring', 'https://stardewvalleywiki.com/mediawiki/images/d/d3/Parsnip_Seeds.png'),
+(5, 'Strawberry Seeds', 100, 'spring', 'https://stardewvalleywiki.com/mediawiki/images/f/f2/Strawberry_Seeds.png'),
+(6, 'Blueberry Seeds', 40, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/8/81/Blueberry_Seeds.png'),
+(7, 'Melon Seeds', 40, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/5/5e/Melon_Seeds.png'),
+(8, 'Pepper Seeds', 20, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/6/67/Pepper_Seeds.png'),
+(9, 'Coffee Bean', 22, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/3/33/Coffee_Bean.png'),
+(10, 'Tomato Seeds', 25, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/e/e3/Tomato_Seeds.png'),
+(11, 'Pumpkin Seeds', 50, 'autumn', 'https://stardewvalleywiki.com/mediawiki/images/9/99/Pumpkin_Seeds.png'),
+(12, 'Grape Starter', 30, 'autumn', 'https://stardewvalleywiki.com/mediawiki/images/d/de/Grape_Starter.png'),
+(13, 'Yam Seeds', 30, 'autumn', 'https://stardewvalleywiki.com/mediawiki/images/e/e9/Yam_Seeds.png'),
+(14, 'Cranberry Seeds', 60, 'autumn', 'https://stardewvalleywiki.com/mediawiki/images/e/ec/Cranberry_Seeds.png'),
+(15, 'Wheat Seeds', 5, 'autumn', 'https://stardewvalleywiki.com/mediawiki/images/2/2b/Wheat_Seeds.png'),
+(16, 'Winter Seeds', 30, 'winter', 'https://stardewvalleywiki.com/mediawiki/images/d/dd/Winter_Seeds.png'),
+(17, 'Powdermelon Seeds', 20, 'winter', 'https://stardewvalleywiki.com/mediawiki/images/d/de/Powdermelon_Seeds.png'),
+(18, 'Fiber Seeds', 5, 'winter', 'https://stardewvalleywiki.com/mediawiki/images/0/05/Fiber_Seeds.png'),
+(19, 'Snow Yam', 100, 'winter', 'https://stardewvalleywiki.com/mediawiki/images/3/3f/Snow_Yam.png'),
+(20, 'Crystal Fruit', 150, 'winter', 'https://stardewvalleywiki.com/mediawiki/images/1/16/Crystal_Fruit.png'),
+(21, 'Apricot Sapling', 500, 'spring', 'https://stardewvalleywiki.com/mediawiki/images/9/9d/Apricot_Sapling.png'),
+(22, 'Bean Starter', 60, 'spring', 'https://stardewvalleywiki.com/mediawiki/images/2/26/Bean_Starter.png'),
+(23, 'Cauliflower Seeds', 80, 'spring', 'https://stardewvalleywiki.com/mediawiki/images/b/bb/Cauliflower_Seeds.png'),
+(24, 'Cherry Sapling', 850, 'spring', 'https://stardewvalleywiki.com/mediawiki/images/2/22/Cherry_Sapling.png'),
+(25, 'Jazz Seeds', 30, 'spring', 'https://stardewvalleywiki.com/mediawiki/images/9/95/Jazz_Seeds.png'),
+(26, 'Potato Seeds', 50, 'spring', 'https://stardewvalleywiki.com/mediawiki/images/4/44/Potato_Seeds.png'),
+(27, 'Rice Shoot', 40, 'spring', 'https://stardewvalleywiki.com/mediawiki/images/8/84/Rice_Shoot.png'),
+(28, 'Rhubarb Seeds', 50, 'spring', 'https://stardewvalleywiki.com/mediawiki/images/4/47/Rhubarb_Seeds.png'),
+(29, 'Spring Seeds', 105, 'spring', 'https://stardewvalleywiki.com/mediawiki/images/3/39/Spring_Seeds.png'),
+(30, 'Tulip Bulb', 20, 'spring', 'https://stardewvalleywiki.com/mediawiki/images/4/42/Tulip_Bulb.png'),
+(31, 'Corn Seeds', 150, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/d/d1/Corn_Seeds.png'),
+(32, 'Hops Starter', 60, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/9/9b/Hops_Starter.png'),
+(33, 'Orange Sapling', 999, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/0/08/Orange_Sapling.png'),
+(34, 'Peach Sapling', 999, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/e/e3/Peach_Sapling.png'),
+(35, 'Poppy Seeds', 100, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/a/a2/Poppy_Seeds.png'),
+(36, 'Radish Seeds', 40, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/b/b1/Radish_Seeds.png'),
+(37, 'Red Cabbage Seeds', 100, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/e/ec/Red_Cabbage_Seeds.png'),
+(38, 'Spangle Seeds', 50, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/8/85/Spangle_Seeds.png'),
+(39, 'Summer Seeds', 150, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/c/c4/Summer_Seeds.png'),
+(40, 'Summer Squash Seeds', 200, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/f/fd/Summer_Squash_Seeds.png'),
+(41, 'Sunflower Seeds', 200, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/1/1f/Sunflower_Seeds.png'),
+(42, 'Starfruit Seeds', 400, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/e/e0/Starfruit_Seeds.png'),
+(43, 'Amaranth Seeds', 70, 'autumn', 'https://stardewvalleywiki.com/mediawiki/images/c/ca/Amaranth_Seeds.png'),
+(44, 'Apple Sapling', 999, 'autumn', 'https://stardewvalleywiki.com/mediawiki/images/6/68/Apple_Sapling.png'),
+(45, 'Artichoke Seeds', 32, 'autumn', 'https://stardewvalleywiki.com/mediawiki/images/7/71/Artichoke_Seeds.png'),
+(46, 'Beet Seeds', 20, 'autumn', 'https://stardewvalleywiki.com/mediawiki/images/a/a8/Beet_Seeds.png'),
+(47, 'Bok Choy Seeds', 50, 'autumn', 'https://stardewvalleywiki.com/mediawiki/images/2/21/Bok_Choy_Seeds.png'),
+(48, 'Broccoli Seeds', 60, 'autumn', 'https://stardewvalleywiki.com/mediawiki/images/9/97/Broccoli_Seeds.png'),
+(49, 'Eggplant Seeds', 20, 'autumn', 'https://stardewvalleywiki.com/mediawiki/images/f/f9/Eggplant_Seeds.png'),
+(50, 'Fairy Seeds', 200, 'autumn', 'https://stardewvalleywiki.com/mediawiki/images/8/8e/Fairy_Seeds.png'),
+(51, 'Autumn Seeds', 250, 'autumn', 'https://stardewvalleywiki.com/mediawiki/images/5/55/Fall_Seeds.png'),
+(52, 'Pomegranate Sapling', 999, 'autumn', 'https://stardewvalleywiki.com/mediawiki/images/1/10/Pomegranate_Sapling.png'),
+(53, 'Rare Seed', 400, 'autumn', 'https://stardewvalleywiki.com/mediawiki/images/5/5b/Rare_Seed.png'),
+(54, 'Sunflower Seeds', 200, 'autumn', 'https://stardewvalleywiki.com/mediawiki/images/1/1f/Sunflower_Seeds.png'),
+(55, 'Acorn', 50, 'winter', 'https://stardewvalleywiki.com/mediawiki/images/c/cd/Acorn.png'),
+(56, 'Ancient Seeds', 60, 'winter', 'https://stardewvalleywiki.com/mediawiki/images/e/ec/Ancient_Seeds.png'),
+(57, 'Cactus Seeds', 150, 'winter', 'https://stardewvalleywiki.com/mediawiki/images/0/09/Cactus_Seeds.png'),
+(58, 'Mahogany Seed', 100, 'winter', 'https://stardewvalleywiki.com/mediawiki/images/8/84/Mahogany_Seed.png'),
+(59, 'Mossy Seed', 150, 'winter', 'https://stardewvalleywiki.com/mediawiki/images/7/78/Mossy_Seed.png'),
+(60, 'Mushroom Tree Seed', 280, 'winter', 'https://stardewvalleywiki.com/mediawiki/images/d/d4/Mushroom_Tree_Seed.png'),
+(61, 'Mystic Tree Seed', 420, 'winter', 'https://stardewvalleywiki.com/mediawiki/images/f/ff/Mystic_Tree_Seed.png'),
+(62, 'Pineapple Seeds', 320, 'summer', 'https://stardewvalleywiki.com/mediawiki/images/1/17/Pineapple_Seeds.png'),
+(63, 'Qi Bean', 20, 'winter', 'https://stardewvalleywiki.com/mediawiki/images/a/a7/Qi_Bean.png'),
+(64, 'Tea Sapling', 20, 'winter', 'https://stardewvalleywiki.com/mediawiki/images/1/12/Tea_Sapling.png'),
+(65, 'Pine Cone', 35, 'winter', 'https://stardewvalleywiki.com/mediawiki/images/9/90/Pine_Cone.png');
 
 -- --------------------------------------------------------
 
@@ -124,6 +192,16 @@ CREATE TABLE `receipt` (
   `totalAmount` float NOT NULL,
   `date` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `receipt`
+--
+
+INSERT INTO `receipt` (`id`, `order_id`, `totalAmount`, `date`) VALUES
+(1, 2, 70, '2025-02-20 11:32:19'),
+(2, 3, 145, '2025-02-20 11:54:57'),
+(3, 4, 100, '2025-02-20 12:09:55'),
+(4, 5, 1139, '2025-02-20 13:10:07');
 
 -- --------------------------------------------------------
 
@@ -202,19 +280,19 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT de tabela `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de tabela `receipt`
 --
 ALTER TABLE `receipt`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `salesdata`

@@ -87,6 +87,7 @@
     z-index: 10;
 }
 
+
 .btn-form {
     width: 100%; 
     padding: 8px;
@@ -99,7 +100,7 @@
     font-family: VT323;
     font-weight: 600;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 @keyframes pulse {

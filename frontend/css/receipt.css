@@ -1,0 +1,119 @@
+main {
+    position: relative;
+    background: url('/img/template_container.png');
+    background-size: 200% 230%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: 6px solid #6d3b16;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+
+    width: 98%;
+    max-width: 500px;
+    margin: 10vh auto;
+    padding-bottom: 100px; /* Aumente esse valor se precisar de mais espaço */
+    
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 40px;
+    max-height: 95vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.receipt-container {
+    position: relative;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%; 
+    min-height: auto;
+    padding-bottom:40px;
+
+}
+
+.receipt-container p {
+    text-align: left;
+    width: 100%;
+}
+
+h1, h2 {
+    z-index: 1;
+    font-size: 4vh;
+    text-align: center;
+    font-family: VT323;
+    color: black;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+p {
+    margin: 8px;
+    font-family: VT323;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.1;
+}
+
+.product-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.product-item {
+
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    margin-bottom: 6px;
+    font-family: VT323;
+    font-size: 1.4rem;
+}
+
+button {
+    width: 100%; 
+    padding: 10px;
+    background: #dda059;
+    color: black;
+    border: 4px solid #8d5524;
+    border-radius: 9px;
+    box-shadow: 4px 4px 0px #6d3b16; 
+    cursor: pointer;
+    font-family: VT323;
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+button:hover {
+    background: #8d5524;
+}
+
+::-webkit-scrollbar {
+    width: 12px; 
+    height: 12px; 
+}
+
+::-webkit-scrollbar-track {
+    background-color: #dda059; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #6b3710; 
+    border-radius: 10px;
+    border: 2px solid #dda059;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #8d5524; 
+}

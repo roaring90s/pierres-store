@@ -35,8 +35,8 @@ You can check out the live project at:
 
 ## 📈 Future Improvements
 
+- Implement a new interface for data analysis of product sales by season, most used payment method and overall sales.
 - Expand product categories and enhance the shopping experience.
 - Optimize backend performance and improve API response times.
-- Add user authentication for personalized shopping experience.
 - Improve frontend with more dynamic features and interactivity.
-- Implement a review and rating system for products.
+

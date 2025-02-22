@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(orderData);
 
         try {
-            const response = await fetch("http://localhost:3001/api/order/create", {
+            const response = await fetch("https://pierres-store.onrender.com/api/order/create", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

@@ -4,15 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalElement = document.getElementById('total');
     const checkoutBtn = document.getElementById('checkout-btn');
 
-    // Função para calcular e atualizar o total
+
     const calculateTotal = () => {
         const total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
         totalElement.textContent = `Total: $${total}`;
     };
 
-    // Exibe os itens no carrinho
+
     const displayCartItems = () => {
-        cartContainer.innerHTML = ""; // Limpa a lista existente de itens no carrinho
+        cartContainer.innerHTML = ""; 
 
         cart.forEach((item, index) => {
             const itemElement = document.createElement("div");
@@ -26,20 +26,20 @@ document.addEventListener("DOMContentLoaded", () => {
             cartContainer.appendChild(itemElement);
         });
 
-        calculateTotal(); // Atualiza o total ao exibir os itens
+        calculateTotal(); 
     };
     
     // Função de remoção de item
     const removeItem = (index) => {
         cart.splice(index, 1);
-        localStorage.setItem('cart', JSON.stringify(cart)); // Atualiza o localStorage
-        displayCartItems(); // Atualiza a exibição dos itens no carrinho
+        localStorage.setItem('cart', JSON.stringify(cart)); 
+        displayCartItems();
         updateCartCount(); 
         calculateTotal();
 
     };
 
-    // Adiciona event listeners para os botões de remoção
+
     cartContainer.addEventListener("click", (event) => {
         if (event.target.classList.contains("remove-item")) {
             const index = event.target.dataset.index;
@@ -49,12 +49,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (checkoutBtn) {
         checkoutBtn.addEventListener("click", () => {
-            localStorage.setItem("cart", JSON.stringify(cart)); // Salva o carrinho
+            localStorage.setItem("cart", JSON.stringify(cart));
             window.location.href = "payment.html";
         });
     }
 
-    displayCartItems(); // Chamada única da função ao carregar a página
+    displayCartItems(); 
 
 });
 
@@ -62,5 +62,5 @@ function goBack() {
     window.history.back(); 
     setTimeout(() => {
         updateCartCount(); 
-    }, 100); // Pequeno delay para garantir a atualização
+    }, 100);
 }

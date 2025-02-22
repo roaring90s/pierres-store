@@ -1,6 +1,6 @@
 function updateCartCount() {
     const cartCountElement = document.getElementById("cart-count");
-    if (!cartCountElement) return; // Evita erro se o elemento não existir
+    if (!cartCountElement) return;
 
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     cartCountElement.textContent = cart.length;

@@ -26,10 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const addToCartButton = productElement.querySelector(".add-to-cart");
             addToCartButton.addEventListener("click", () => {
-                let cart = JSON.parse(localStorage.getItem('cart')) || []; // Sempre pega a versão mais recente
+                let cart = JSON.parse(localStorage.getItem('cart')) || []; 
                 cart.push(product); 
-                localStorage.setItem('cart', JSON.stringify(cart)); // Salva a versão atualizada no localStorage
-                updateCartCount(); // Atualiza o contador
+                localStorage.setItem('cart', JSON.stringify(cart)); 
+                updateCartCount(); 
             });           
         });
 

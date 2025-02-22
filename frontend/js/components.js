@@ -61,7 +61,7 @@ function setFavicon(faviconPath) {
     link.href = `${faviconPath}?v=${new Date().getTime()}`;
 }
 
-setFavicon("../img/pierres_shop.png");
+setFavicon("./img/pierres_shop.png");
 
 
 function filterProducts(season) {

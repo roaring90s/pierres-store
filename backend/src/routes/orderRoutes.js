@@ -10,13 +10,12 @@ router.post('/create', async (req, res) => {
     }
 
     try {
-        // Inserir o pedido na tabela 'order'
+
         const [{ insertId: orderId }] = await db.query(
             "INSERT INTO `order` (name, phone, email, address, total, paymentMethod) VALUES (?, ?, ?, ?, ?, ?)",
             [name, phone, email, address, total, paymentMethod]
         );
 
-        // Criar um mapa para somar as quantidades dos produtos repetidos
         const productMap = new Map();
 
         for (let item of products) {
@@ -27,7 +26,6 @@ router.post('/create', async (req, res) => {
             }
         }
 
-        // Inserir produtos na tabela order_product
         for (let [product_id, quantity] of productMap.entries()) {
             await db.query(
                 `INSERT INTO order_product (order_id, product_id, quantity)
@@ -37,7 +35,6 @@ router.post('/create', async (req, res) => {
             );
         }
 
-        // Inserir o recibo
         await db.query(
             "INSERT INTO receipt (order_id, totalAmount) VALUES (?, ?)",
             [orderId, total]
@@ -52,7 +49,6 @@ router.post('/create', async (req, res) => {
 
 router.get('/all', async (req, res) => {
     try {
-        // Buscar todos os pedidos
         const [orders] = await db.query("SELECT * FROM `order`");
 
         if (!orders.length) {
@@ -70,14 +66,12 @@ router.get('/details/:orderId', async (req, res) => {
     const { orderId } = req.params;
 
     try {
-        // Buscar os detalhes do pedido
         const [orderDetails] = await db.query("SELECT name, phone, email, address, total FROM `order` WHERE id = ?", [orderId]);
 
         if (!orderDetails.length) {
             return res.status(404).json({ error: "Order not found" });
         }
 
-        // Buscar os produtos do pedido
         const [products] = await db.query(`
             SELECT p.name, p.price, op.quantity
             FROM order_product op

@@ -12,7 +12,7 @@ main {
     width: 98%;
     max-width: 500px;
     margin: 10vh auto;
-    padding-bottom: 100px; /* Aumente esse valor se precisar de mais espaço */
+    padding-bottom: 100px; 
     
     background-color: rgba(255, 255, 255, 0.8);
     text-align: center;

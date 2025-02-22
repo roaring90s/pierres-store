@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (response.ok) {
             const receiptContainer = document.querySelector(".receipt-container");
 
-            // Criar estrutura completa
+            // Estrutura completa
             receiptContainer.innerHTML = `
                 <h1>Order Receipt</h1>
                 <p><strong>Order ID:</strong> ${orderId}</p>
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <button id="return-to-store">Return to Store</button>
             `;
 
-            // Adicionar os produtos à lista já inserida no HTML
+
             const productList = document.getElementById("product-list");
 
             data.products.forEach(product => {
@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 productList.appendChild(item);
             });
 
-            // Adicionar funcionalidade ao botão "Return to Store"
             document.getElementById("return-to-store").addEventListener("click", () => {
                 window.location.href = "index.html";
             });

@@ -15,7 +15,6 @@ const createOrder = async (req, res) => {
 
         console.log("Order ID:", orderId);
 
-        // Criar um mapa para somar a quantidade dos produtos duplicados
         const productMap = new Map();
 
         for (let item of products) {
@@ -26,7 +25,6 @@ const createOrder = async (req, res) => {
             }
         }
 
-        // Inserir produtos na tabela order_product
         for (let [product_id, quantity] of productMap.entries()) {
             await db.query(
                 `INSERT INTO order_product (order_id, product_id, quantity)

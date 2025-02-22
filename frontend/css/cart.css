@@ -40,7 +40,7 @@ main {
 
 #cart-count {
     position: absolute;
-    right: 20px;   /* Aproxima o ícone e o contador da borda direita */
+    right: 20px;
     top: 10px;  
     display: flex;
     align-items: center; 
@@ -50,7 +50,7 @@ main {
     color: #6b3710;     
 }
 
-/* Estiliza cada produto individualmente */
+
 #cart-items {
     margin-top: 20px; 
     background: #8d5524;
@@ -59,7 +59,7 @@ main {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column; 
-    align-items: center;  /* Centraliza os itens horizontalmente */
+    align-items: center; 
     justify-content: center;
     margin-bottom: 6px;
     transition: transform 0.3s ease;
@@ -70,7 +70,7 @@ main {
     transform: translateY(-5px);
 }
 
-/* Nome do produto */
+
 #cart-items h3 {
     font-size: 3vh;
     margin: 0;
@@ -83,7 +83,6 @@ main {
     width: 100%; 
 }
 
-/* Preço */
 #cart-items p {
     font-size: 21px;
     color: black;
@@ -135,7 +134,6 @@ main {
     font-size: 1.3rem;
 }
 
-/* Efeito de hover */
 .remove-item:hover {
     background-color: #6b3710;
 }

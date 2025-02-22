@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20/02/2025 às 18:46
+-- Tempo de geração: 21/02/2025 às 03:35
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -24,32 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cart`
---
-
-CREATE TABLE `cart` (
-  `id` int(11) NOT NULL,
-  `total` double NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `cart_product`
---
-
-CREATE TABLE `cart_product` (
-  `cart_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estrutura para tabela `order`
 --
 
+DROP TABLE IF EXISTS `order`;
 CREATE TABLE `order` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -65,11 +43,17 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`id`, `name`, `phone`, `email`, `address`, `total`, `paymentMethod`) VALUES
-(1, 'John Doe', '123456789', 'john@example.com', 'John\'s Farm', 45, 'C'),
-(2, 'John Doe', '123456789', 'john@example.com', 'John\'s Farm', 70, 'C'),
-(3, 'Toby Diaz', '8879456123', 'theonethoby@gmail.com', 'Toby\'s Farm', 145, 'D'),
-(4, 'Nack Tias', '123789456', 'nack@aot.com', 'Nack Tia\'s Farm', 100, 'C'),
-(5, 'El Marco', '6178945612', 'elmarco@delocho.com', 'Mexico City', 1139, 'S');
+(6, 'John Alfred ', '61912345678', 'youandi@hotmail.com', 'Nebraska', 80, 'C'),
+(7, 'Eren Yeager', '6147879454', 'attackontitan@hotmail.com', 'Wall Maria', 110, 'D'),
+(8, 'Elsa', '45612378', 'frozen@hotmail.com', 'Arendelle', 120, 'D'),
+(9, 'Anna', '6191234567', 'anna@hotmail.com', 'Arendelle', 120, 'C'),
+(10, 'Robert Campus', '77778445454', 'robertocarlos@hotmail.com', 'Fazenda Berti', 120, 'C'),
+(11, 'Marina Diamandis', '333444555666', 'marina@diamandis.com', 'Whales', 60, 'C'),
+(12, 'Marcos Antônio', '4567812354', 'marcos@hotmail.com', 'Marcos\' Farm', 110, 'S'),
+(13, 'Mark the Farmer', '61974851263', 'markthefarmer@valley.com', 'Pellican Valley downtown', 1210, 'C'),
+(14, 'Toby Diaz', '61912345678', 'theonethoby@gmail.com', 'Toby\'s Farm', 55, 'C'),
+(15, 'Logan Paul', '45678123', 'loganpaul@hotmail.com', 'Washingtown Farm', 80, 'C'),
+(16, 'Anna P', '12165451', 'anna@hotmail.com', 'Arendelle', 80, 'C');
 
 -- --------------------------------------------------------
 
@@ -77,6 +61,7 @@ INSERT INTO `order` (`id`, `name`, `phone`, `email`, `address`, `total`, `paymen
 -- Estrutura para tabela `order_product`
 --
 
+DROP TABLE IF EXISTS `order_product`;
 CREATE TABLE `order_product` (
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -88,12 +73,31 @@ CREATE TABLE `order_product` (
 --
 
 INSERT INTO `order_product` (`order_id`, `product_id`, `quantity`) VALUES
-(4, 6, 1),
-(4, 7, 1),
-(4, 8, 1),
-(5, 6, 1),
-(5, 34, 1),
-(5, 37, 1);
+(6, 7, 1),
+(7, 11, 1),
+(7, 12, 1),
+(7, 13, 1),
+(8, 6, 1),
+(9, 6, 1),
+(10, 6, 1),
+(11, 2, 1),
+(11, 7, 1),
+(12, 11, 1),
+(12, 12, 1),
+(12, 13, 1),
+(13, 1, 2),
+(13, 5, 1),
+(13, 22, 2),
+(13, 23, 1),
+(13, 24, 1),
+(13, 25, 1),
+(14, 16, 1),
+(14, 17, 1),
+(14, 18, 1),
+(15, 11, 1),
+(15, 12, 1),
+(16, 11, 1),
+(16, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -101,6 +105,7 @@ INSERT INTO `order_product` (`order_id`, `product_id`, `quantity`) VALUES
 -- Estrutura para tabela `product`
 --
 
+DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -186,22 +191,26 @@ INSERT INTO `product` (`id`, `name`, `price`, `season`, `image_url`) VALUES
 -- Estrutura para tabela `receipt`
 --
 
+DROP TABLE IF EXISTS `receipt`;
 CREATE TABLE `receipt` (
   `id` int(11) NOT NULL,
   `order_id` int(11) DEFAULT NULL,
-  `totalAmount` float NOT NULL,
-  `date` datetime DEFAULT current_timestamp()
+  `totalAmount` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `receipt`
 --
 
-INSERT INTO `receipt` (`id`, `order_id`, `totalAmount`, `date`) VALUES
-(1, 2, 70, '2025-02-20 11:32:19'),
-(2, 3, 145, '2025-02-20 11:54:57'),
-(3, 4, 100, '2025-02-20 12:09:55'),
-(4, 5, 1139, '2025-02-20 13:10:07');
+INSERT INTO `receipt` (`id`, `order_id`, `totalAmount`) VALUES
+(5, 6, 80),
+(6, 7, 110),
+(7, 11, 60),
+(8, 12, 110),
+(9, 13, 1210),
+(10, 14, 55),
+(11, 15, 80),
+(12, 16, 80);
 
 -- --------------------------------------------------------
 
@@ -209,6 +218,7 @@ INSERT INTO `receipt` (`id`, `order_id`, `totalAmount`, `date`) VALUES
 -- Estrutura para tabela `salesdata`
 --
 
+DROP TABLE IF EXISTS `salesdata`;
 CREATE TABLE `salesdata` (
   `id` int(11) NOT NULL,
   `season` varchar(50) NOT NULL,
@@ -219,19 +229,6 @@ CREATE TABLE `salesdata` (
 --
 -- Índices para tabelas despejadas
 --
-
---
--- Índices de tabela `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices de tabela `cart_product`
---
-ALTER TABLE `cart_product`
-  ADD PRIMARY KEY (`cart_id`,`product_id`),
-  ADD KEY `product_id` (`product_id`);
 
 --
 -- Índices de tabela `order`
@@ -271,16 +268,10 @@ ALTER TABLE `salesdata`
 --
 
 --
--- AUTO_INCREMENT de tabela `cart`
---
-ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de tabela `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `product`
@@ -292,7 +283,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT de tabela `receipt`
 --
 ALTER TABLE `receipt`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `salesdata`
@@ -303,13 +294,6 @@ ALTER TABLE `salesdata`
 --
 -- Restrições para tabelas despejadas
 --
-
---
--- Restrições para tabelas `cart_product`
---
-ALTER TABLE `cart_product`
-  ADD CONSTRAINT `cart_product_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `cart_product_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE;
 
 --
 -- Restrições para tabelas `order_product`

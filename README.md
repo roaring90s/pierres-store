@@ -1,7 +1,5 @@
 # Pierre's General Store
 
-🚀 **Project Completed** 🚀
-
 Pierre's General Store is an e-commerce platform inspired by the "Pierre's General Store" from *Stardew Valley*. The platform allows customers to browse products by season, place orders, and receive receipts without requiring account creation. The project is fully developed with a Node.js and Express.js backend, and a simple HTML, CSS, and JavaScript frontend.
 
 ## 📌 Technologies Used

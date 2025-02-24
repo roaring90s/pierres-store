@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             try {
                 
-                const response = await fetch(`/products/${season}`);
+                const response = await fetch(`https://pierres-store.onrender.com/products/${season}`);
                 if (!response.ok) {
                     throw new Error("Erro ao buscar produtos");
                 }

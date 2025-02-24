@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21/02/2025 às 03:35
+-- Tempo de geração: 22/02/2025 às 16:25
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -27,7 +27,6 @@ SET time_zone = "+00:00";
 -- Estrutura para tabela `order`
 --
 
-DROP TABLE IF EXISTS `order`;
 CREATE TABLE `order` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -53,7 +52,9 @@ INSERT INTO `order` (`id`, `name`, `phone`, `email`, `address`, `total`, `paymen
 (13, 'Mark the Farmer', '61974851263', 'markthefarmer@valley.com', 'Pellican Valley downtown', 1210, 'C'),
 (14, 'Toby Diaz', '61912345678', 'theonethoby@gmail.com', 'Toby\'s Farm', 55, 'C'),
 (15, 'Logan Paul', '45678123', 'loganpaul@hotmail.com', 'Washingtown Farm', 80, 'C'),
-(16, 'Anna P', '12165451', 'anna@hotmail.com', 'Arendelle', 80, 'C');
+(16, 'Anna P', '12165451', 'anna@hotmail.com', 'Arendelle', 80, 'C'),
+(17, 'Toby Diaz', '456781235', 'theonethoby@gmail.com', 'Toby\'s Farm', 35, 'C'),
+(18, 'Test', '33344466855', 'test@hotmail.com', 'Test\'s Farm, Pellican Valley', 135, 'D');
 
 -- --------------------------------------------------------
 
@@ -61,7 +62,6 @@ INSERT INTO `order` (`id`, `name`, `phone`, `email`, `address`, `total`, `paymen
 -- Estrutura para tabela `order_product`
 --
 
-DROP TABLE IF EXISTS `order_product`;
 CREATE TABLE `order_product` (
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -97,7 +97,12 @@ INSERT INTO `order_product` (`order_id`, `product_id`, `quantity`) VALUES
 (15, 11, 1),
 (15, 12, 1),
 (16, 11, 1),
-(16, 12, 1);
+(16, 12, 1),
+(17, 1, 1),
+(17, 2, 1),
+(18, 1, 1),
+(18, 2, 1),
+(18, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -105,7 +110,6 @@ INSERT INTO `order_product` (`order_id`, `product_id`, `quantity`) VALUES
 -- Estrutura para tabela `product`
 --
 
-DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -191,7 +195,6 @@ INSERT INTO `product` (`id`, `name`, `price`, `season`, `image_url`) VALUES
 -- Estrutura para tabela `receipt`
 --
 
-DROP TABLE IF EXISTS `receipt`;
 CREATE TABLE `receipt` (
   `id` int(11) NOT NULL,
   `order_id` int(11) DEFAULT NULL,
@@ -210,7 +213,9 @@ INSERT INTO `receipt` (`id`, `order_id`, `totalAmount`) VALUES
 (9, 13, 1210),
 (10, 14, 55),
 (11, 15, 80),
-(12, 16, 80);
+(12, 16, 80),
+(13, 17, 35),
+(14, 18, 135);
 
 -- --------------------------------------------------------
 
@@ -218,7 +223,6 @@ INSERT INTO `receipt` (`id`, `order_id`, `totalAmount`) VALUES
 -- Estrutura para tabela `salesdata`
 --
 
-DROP TABLE IF EXISTS `salesdata`;
 CREATE TABLE `salesdata` (
   `id` int(11) NOT NULL,
   `season` varchar(50) NOT NULL,
@@ -271,7 +275,7 @@ ALTER TABLE `salesdata`
 -- AUTO_INCREMENT de tabela `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `product`
@@ -283,7 +287,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT de tabela `receipt`
 --
 ALTER TABLE `receipt`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `salesdata`

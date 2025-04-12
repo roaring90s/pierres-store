@@ -35,7 +35,7 @@ You can check out the live project at:
 
 ## 📈 Future Improvements
 
-- Implement a new interface for data analysis of product sales by season, most used payment method and overall sales.
+- Use Python and Power BI to create charts for visualization with the APIs.
 - Expand product categories and enhance the shopping experience.
 - Optimize backend performance and improve API response times.
 - Improve frontend with more dynamic features and interactivity.

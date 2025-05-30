@@ -35,8 +35,9 @@ You can check out the live project at:
 
 ## 📈 Future Improvements
 
-- Use Python and Power BI to create charts for visualization with the APIs.
-- Expand product categories and enhance the shopping experience.
-- Optimize backend performance and improve API response times.
-- Improve frontend with more dynamic features and interactivity.
+- 📊 **Pierre's Store Part 2 - Data Analysis**: Leverage SQL, Python, and Power BI to extract insights from the e-commerce data — including revenue by season, most profitable products, and seasonal sales behavior.
+- 🧠 Integrate basic demand forecasting models based on historical order and seasonal patterns.
+- 🛍️ Expand product categories and personalize the shopping experience with seasonal recommendations.
+- 🚀 Optimize backend performance and reduce API response times.
+- 🎨 Improve the frontend with more dynamic and interactive features for smoother user experience.
 

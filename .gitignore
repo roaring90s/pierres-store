@@ -1,8 +1,6 @@
-# Ignorar dependências do Node.js
+
 node_modules/
 backend/node_modules/
 package-lock.json
 backend/src/routes/cartRoutes.js
-
-# Variáveis de ambiente
 backend/.env

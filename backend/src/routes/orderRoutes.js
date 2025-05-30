@@ -10,11 +10,14 @@ router.post('/create', async (req, res) => {
     }
 
     try {
-
-        const [{ insertId: orderId }] = await db.query(
-            "INSERT INTO `order` (name, phone, email, address, total, paymentMethod) VALUES (?, ?, ?, ?, ?, ?)",
+        // Insert no "orders" com placeholders PostgreSQL
+        const result = await db.query(
+            `INSERT INTO "orders" (name, phone, email, address, total, paymentmethod) 
+             VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
             [name, phone, email, address, total, paymentMethod]
         );
+
+        const orderId = result.rows[0].id;
 
         const productMap = new Map();
 
@@ -29,14 +32,15 @@ router.post('/create', async (req, res) => {
         for (let [product_id, quantity] of productMap.entries()) {
             await db.query(
                 `INSERT INTO order_product (order_id, product_id, quantity)
-                 VALUES (?, ?, ?)
-                 ON DUPLICATE KEY UPDATE quantity = quantity + ?`,
-                [orderId, product_id, quantity, quantity]
+                 VALUES ($1, $2, $3)
+                 ON CONFLICT (order_id, product_id)
+                 DO UPDATE SET quantity = order_product.quantity + EXCLUDED.quantity`,
+                [orderId, product_id, quantity]
             );
         }
 
         await db.query(
-            "INSERT INTO receipt (order_id, totalAmount) VALUES (?, ?)",
+            `INSERT INTO receipt (order_id, totalamount) VALUES ($1, $2)`,
             [orderId, total]
         );
 
@@ -49,7 +53,8 @@ router.post('/create', async (req, res) => {
 
 router.get('/all', async (req, res) => {
     try {
-        const [orders] = await db.query("SELECT * FROM `order`");
+        const result = await db.query(`SELECT * FROM "orders"`);
+        const orders = result.rows;
 
         if (!orders.length) {
             return res.status(404).json({ error: "No orders found" });
@@ -66,27 +71,30 @@ router.get('/details/:orderId', async (req, res) => {
     const { orderId } = req.params;
 
     try {
-        const [orderDetails] = await db.query("SELECT name, phone, email, address, total FROM `order` WHERE id = ?", [orderId]);
+        const orderResult = await db.query(
+            `SELECT name, phone, email, address, total FROM "orders" WHERE id = $1`,
+            [orderId]
+        );
 
-        if (!orderDetails.length) {
+        if (orderResult.rows.length === 0) {
             return res.status(404).json({ error: "Order not found" });
         }
 
-        const [products] = await db.query(`
+        const productsResult = await db.query(`
             SELECT p.name, p.price, op.quantity
             FROM order_product op
             JOIN product p ON op.product_id = p.id
-            WHERE op.order_id = ?`, [orderId]);
+            WHERE op.order_id = $1
+        `, [orderId]);
 
-        res.json({ 
-            order: orderDetails[0], 
-            products 
+        res.json({
+            order: orderResult.rows[0],
+            products: productsResult.rows
         });
     } catch (error) {
         console.error("Error fetching order details:", error);
         res.status(500).json({ error: "Internal server error" });
     }
 });
-
 
 module.exports = router;

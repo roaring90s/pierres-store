@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-        const response = await fetch(`https://pierres-store.onrender.com/api/order/details/${orderId}`);
+        const response = await fetch(`/api/order/details/${orderId}`);
         const data = await response.json();
 
         if (response.ok) {

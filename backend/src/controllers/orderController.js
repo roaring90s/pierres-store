@@ -8,11 +8,13 @@ const createOrder = async (req, res) => {
     }
 
     try {
-        const [{ insertId: orderId }] = await db.query(
-            "INSERT INTO `order` (name, phone, email, address, total, paymentMethod) VALUES (?, ?, ?, ?, ?, ?)",
+        const result = await db.query(
+            `INSERT INTO "orders" (name, phone, email, address, total, "paymentMethod")
+             VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
             [name, phone, email, address, total, paymentMethod]
         );
 
+        const orderId = result.rows[0].id;
         console.log("Order ID:", orderId);
 
         const productMap = new Map();
@@ -28,14 +30,15 @@ const createOrder = async (req, res) => {
         for (let [product_id, quantity] of productMap.entries()) {
             await db.query(
                 `INSERT INTO order_product (order_id, product_id, quantity)
-                 VALUES (?, ?, ?)
-                 ON DUPLICATE KEY UPDATE quantity = quantity + ?`,
-                [orderId, product_id, quantity, quantity]
+                 VALUES ($1, $2, $3)
+                 ON CONFLICT (order_id, product_id)
+                 DO UPDATE SET quantity = order_product.quantity + EXCLUDED.quantity`,
+                [orderId, product_id, quantity]
             );
         }
 
         await db.query(
-            "INSERT INTO receipt (order_id, totalAmount) VALUES (?, ?)",
+            `INSERT INTO receipt (order_id, totalamount) VALUES ($1, $2)`,
             [orderId, total]
         );
 
